@@ -96,7 +96,7 @@ export default function Home() {
       <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur-md">
         <div className="container mx-auto flex flex-col gap-4 py-4 px-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-xl font-bold tracking-tight text-primary">Antigravity</h1>
+            <h1 className="text-xl font-bold tracking-tight text-primary">MobileMakers</h1>
             <Link href="/notifications" className="p-2 rounded-full bg-muted/50 hover:bg-muted transition-colors relative">
               <Bell className="h-5 w-5" />
             </Link>

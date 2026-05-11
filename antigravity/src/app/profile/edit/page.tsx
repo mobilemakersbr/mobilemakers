@@ -29,7 +29,7 @@ export default async function EditProfilePage() {
         <div className="space-y-6">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Editar Perfil</h1>
-            <p className="text-muted-foreground">Como as pessoas verão você no Antigravity.</p>
+            <p className="text-muted-foreground">Como as pessoas verão você no MobileMakers.</p>
           </div>
 
           <ProfileForm profile={profile} userId={user.id} />

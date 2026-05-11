@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Antigravity - Mobile-First Stock Photos",
+  title: "MobileMakers - Mobile-First Stock Photos",
   description: "Premium UGC stock photos captured on mobile devices.",
 };
 

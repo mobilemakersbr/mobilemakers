@@ -61,7 +61,7 @@ export default function UploadPage() {
             <CardTitle>Novo Upload</CardTitle>
           </div>
           <CardDescription>
-            Compartilhe sua visão do mundo com o marketplace Antigravity.
+            Compartilhe sua visão do mundo com o marketplace MobileMakers.
           </CardDescription>
         </CardHeader>
         <CardContent>

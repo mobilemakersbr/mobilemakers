@@ -44,7 +44,7 @@ export default function LoginPage() {
               <Rocket className="h-8 w-8 text-primary" />
             </div>
           </div>
-          <CardTitle className="text-2xl font-bold tracking-tight">Antigravity</CardTitle>
+          <CardTitle className="text-2xl font-bold tracking-tight">MobileMakers</CardTitle>
           <CardDescription>
             {isLogin ? "Entre na sua conta para continuar." : "Crie sua conta e comece a publicar."}
           </CardDescription>

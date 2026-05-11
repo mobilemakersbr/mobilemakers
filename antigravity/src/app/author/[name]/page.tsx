@@ -52,7 +52,7 @@ export default async function AuthorPage(props: { params: Promise<{ name: string
             <div className="flex-1 space-y-1">
               <h1 className="text-3xl font-bold tracking-tight">{name}</h1>
               <p className="text-muted-foreground">
-                Membro do Antigravity • {photos.length} {photos.length === 1 ? 'Foto' : 'Fotos'} publicadas
+                Membro do MobileMakers • {photos.length} {photos.length === 1 ? 'Foto' : 'Fotos'} publicadas
               </p>
             </div>
           </div>
