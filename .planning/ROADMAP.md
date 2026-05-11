@@ -1,24 +1,20 @@
 # Roadmap: MobileMakers
 
-## Milestone 1: MVP - Catálogo e Busca
+## Milestone 1: MVP - Catálogo e Busca (CONCLUÍDO ✅)
 
-### Phase 1: Setup e Estrutura Base
+- ✅ **Fase 1:** Setup e Estrutura Base
+- ✅ **Fase 2:** Galeria e Visualização
+- ✅ **Fase 3:** Busca e Categorias
 
-- [ ] Iniciar Next.js local.
-- [ ] Configurar Tailwind e Design System Mobile-First.
-- [ ] Criar Navbar e Layout base.
+## Milestone 2: Core Full-Stack (CONCLUÍDO ✅)
 
-### Phase 2: Galeria e Visualização
+- ✅ **Fase 4:** Autenticação (Supabase Auth)
+- ✅ **Fase 5:** Upload de Fotos (Storage + DB)
+- ✅ **Fase 6:** Engajamento Social (Likes e Comentários)
+- ✅ **Fase 7:** Perfil do Usuário e Edição
 
-- [ ] Implementar Grid de imagens (Pinterest style).
-- [ ] Criar página de detalhes da imagem.
-- [ ] Mock de dados iniciais.
+## Milestone 3: Expansão e Escala (PRÓXIMO 🚀)
 
-### Phase 3: Integração Local (Supabase/Mock)
-
-- [ ] Setup da estrutura do banco de dados.
-- [ ] API de listagem de assets.
-
-## Milestone 2: Upload e Processamento
-
-## Milestone 3: Checkout e SEO
+- [ ] **Fase 8:** Notificações e Atividades em Tempo Real
+- [ ] **Fase 9:** SEO Avançado e Metadados de Imagem
+- [ ] **Fase 10:** Dashboard de Analytics para Autores

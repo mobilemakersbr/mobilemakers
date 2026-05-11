@@ -8,6 +8,7 @@ import { Photo } from "@/lib/data"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Settings, ImageIcon, Heart } from "lucide-react"
+import { ThemeToggle } from "@/components/theme-toggle"
 import Link from "next/link"
 
 export default async function ProfilePage() {
@@ -62,9 +63,12 @@ export default async function ProfilePage() {
             </div>
             
             <div className="flex-1 space-y-1">
-              <h1 className="text-3xl font-bold tracking-tight">
-                {profile?.full_name || "Usuário sem nome"}
-              </h1>
+              <div className="flex items-center justify-between">
+                <h1 className="text-3xl font-bold tracking-tight">
+                  {profile?.full_name || "Usuário sem nome"}
+                </h1>
+                <ThemeToggle />
+              </div>
               <p className="text-muted-foreground">{user.email}</p>
             </div>
           </div>
