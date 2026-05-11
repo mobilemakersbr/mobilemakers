@@ -31,7 +31,7 @@ export default function LoginPage() {
         setIsSuccess(true)
       }
     } catch (error) {
-      alert("Erro: " + (error as any).message)
+      alert("Erro: " + (error as Error).message)
     } finally {
       setIsLoading(false)
     }

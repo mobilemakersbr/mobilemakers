@@ -41,8 +41,8 @@ export function ImageCard({ photo, isLiked: initialLiked = false, userId }: Imag
     if (confirm("Tem certeza que deseja apagar esta foto permanentemente?")) {
       try {
         await deletePhoto(photo.id, photo.url)
-      } catch (error) {
-        alert("Erro ao apagar foto.")
+      } catch (err) {
+        alert("Erro ao apagar foto: " + (err as Error).message)
       }
     }
   }
@@ -78,7 +78,7 @@ export function ImageCard({ photo, isLiked: initialLiked = false, userId }: Imag
       </div>
 
       {/* Botão de Delete (Só para o dono) */}
-      {userId === (photo as any).user_id && (
+      {userId === photo.user_id && (
         <button 
           onClick={(e) => {
             e.preventDefault()

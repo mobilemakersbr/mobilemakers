@@ -62,7 +62,7 @@ export default async function NotificationsPage() {
                   <span className="font-bold">{notif.actor?.full_name || "Alguém"}</span>
                   {notif.type === 'like' ? ' curtiu sua foto' : ' comentou na sua foto'}
                   <span className="font-medium text-primary ml-1 line-clamp-1 italic">
-                    "{notif.photo?.title}"
+                    &quot;{notif.photo?.title}&quot;
                   </span>
                 </p>
                 <p className="text-[10px] text-muted-foreground mt-1">

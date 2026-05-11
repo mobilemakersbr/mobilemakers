@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic'
 
 import { createClient } from '@/utils/supabase/server'
 import { cookies } from 'next/headers'
+import Link from 'next/link'
 
 export default async function Page() {
   const cookieStore = await cookies()
@@ -21,7 +22,7 @@ export default async function Page() {
           <p className="text-xs mt-2 opacity-70">URL: {process.env.NEXT_PUBLIC_SUPABASE_URL}</p>
         </div>
       )}
-      <a href="/" className="mt-8 text-primary underline">Voltar para Home</a>
+      <Link href="/" className="mt-8 text-primary underline">Voltar para Home</Link>
     </div>
   )
 }

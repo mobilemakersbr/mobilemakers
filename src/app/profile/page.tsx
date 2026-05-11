@@ -41,7 +41,7 @@ export default async function ProfilePage() {
     .eq('user_id', user.id)
   
   const likedPhotos = likedPhotosData?.map(item => item.photos).filter(Boolean) || []
-  const userLikes = likedPhotos.map((p: any) => p.id)
+  const userLikes = likedPhotos.map((p: { id: string }) => p.id)
 
   return (
     <div className="flex min-h-screen flex-col bg-background pb-20">
@@ -96,7 +96,7 @@ export default async function ProfilePage() {
           
           <TabsContent value="likes">
             <ImageGrid 
-              photos={likedPhotos as any} 
+              photos={likedPhotos as { id: string; url: string; title: string; user_id: string }[]} 
               userLikes={userLikes}
               userId={user.id}
             />

@@ -4,6 +4,7 @@ export const dynamic = 'force-dynamic'
 
 import * as React from "react"
 import { createClient } from "@/utils/supabase/client"
+import { User } from "@supabase/supabase-js"
 import { Photo } from "@/lib/data"
 import { ImageGrid } from "@/components/image-grid"
 import { SearchBar } from "@/components/search-bar"
@@ -15,7 +16,7 @@ import Link from "next/link"
 export default function Home() {
   const [photos, setPhotos] = React.useState<Photo[]>([])
   const [userLikes, setUserLikes] = React.useState<string[]>([]) // Array de IDs das fotos curtidas
-  const [user, setUser] = React.useState<any>(null)
+  const [user, setUser] = React.useState<User | null>(null)
   const [isLoading, setIsLoading] = React.useState(true)
   const [searchQuery, setSearchQuery] = React.useState("")
   const [activeCategory, setActiveCategory] = React.useState("Tudo")

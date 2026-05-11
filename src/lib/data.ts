@@ -5,6 +5,7 @@ export interface Photo {
   author: string
   category: string
   aspectRatio: "portrait" | "landscape" | "square"
+  user_id?: string
 }
 
 export const photos: Photo[] = [

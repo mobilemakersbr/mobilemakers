@@ -46,7 +46,7 @@ export default function UploadPage() {
       await uploadPhoto({ file, title, tags, location, category })
       alert("Foto enviada com sucesso!")
     } catch (error) {
-      alert("Erro no upload: " + (error as any).message)
+      alert("Erro no upload: " + (error as Error).message)
     } finally {
       setIsLoading(false)
     }
