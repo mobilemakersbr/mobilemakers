@@ -40,8 +40,8 @@ export default async function ProfilePage() {
     .select('photos(*)')
     .eq('user_id', user.id)
   
-  const likedPhotos = likedPhotosData?.map(item => item.photos).filter(Boolean) || []
-  const userLikes = likedPhotos.map((p: { id: string }) => p.id)
+  const likedPhotos = (likedPhotosData?.map(item => item.photos) as unknown as any[]).filter(Boolean) || []
+  const userLikes = likedPhotos.map((p) => p.id)
 
   return (
     <div className="flex min-h-screen flex-col bg-background pb-20">
