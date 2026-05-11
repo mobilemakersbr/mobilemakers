@@ -24,7 +24,7 @@ export function ProfileForm({ profile, userId }: { profile: any, userId: string 
 
       const file = e.target.files[0]
       const fileExt = file.name.split('.').pop()
-      const filePath = `${userId}-${Math.random()}.${fileExt}`
+      const filePath = `${userId}-${crypto.randomUUID()}.${fileExt}`
 
       const { error: uploadError } = await supabase.storage
         .from('avatars')

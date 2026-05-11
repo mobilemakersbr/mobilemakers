@@ -18,7 +18,7 @@ export function useUpload() {
     
     // 1. Upload da imagem para o Bucket 'photos'
     const fileExt = file.name.split('.').pop()
-    const fileName = `${Math.random()}.${fileExt}`
+    const fileName = `${crypto.randomUUID()}.${fileExt}`
     const filePath = `${fileName}`
 
     const { data: storageData, error: storageError } = await supabase.storage
