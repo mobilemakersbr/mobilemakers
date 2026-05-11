@@ -96,7 +96,7 @@ export default async function ProfilePage() {
           
           <TabsContent value="likes">
             <ImageGrid 
-              photos={likedPhotos as { id: string; url: string; title: string; user_id: string }[]} 
+              photos={likedPhotos as any} 
               userLikes={userLikes}
               userId={user.id}
             />
