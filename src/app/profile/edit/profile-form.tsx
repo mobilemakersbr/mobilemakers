@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Loader2, Save, Camera } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
-export function ProfileForm({ profile, userId }: { profile: any, userId: string }) {
+export function ProfileForm({ profile, userId }: { profile: { full_name?: string; avatar_url?: string } | null, userId: string }) {
   const [name, setName] = React.useState(profile?.full_name || "")
   const [avatarUrl, setAvatarUrl] = React.useState(profile?.avatar_url || "")
   const [uploading, setUploading] = React.useState(false)
@@ -37,8 +37,9 @@ export function ProfileForm({ profile, userId }: { profile: any, userId: string 
         .getPublicUrl(filePath)
 
       setAvatarUrl(publicUrl)
-    } catch (error: any) {
-      alert("Erro ao carregar avatar: " + (error.message || "Erro desconhecido"))
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Erro desconhecido"
+      alert("Erro ao carregar avatar: " + message)
       console.error(error)
     } finally {
       setUploading(false)
@@ -63,8 +64,9 @@ export function ProfileForm({ profile, userId }: { profile: any, userId: string 
       
       router.push('/profile')
       router.refresh()
-    } catch (error) {
+    } catch (err) {
       alert("Erro ao salvar perfil.")
+      console.error(err)
     } finally {
       setIsLoading(false)
     }

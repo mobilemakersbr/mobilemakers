@@ -21,7 +21,7 @@ export function useUpload() {
     const fileName = `${crypto.randomUUID()}.${fileExt}`
     const filePath = `${fileName}`
 
-    const { data: storageData, error: storageError } = await supabase.storage
+    const { error: storageError } = await supabase.storage
       .from('photos')
       .upload(filePath, file)
 
