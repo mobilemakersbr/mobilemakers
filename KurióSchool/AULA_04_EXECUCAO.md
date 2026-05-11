@@ -34,6 +34,7 @@ No arquivo `layout.tsx`, aplicamos duas técnicas avançadas:
 - **Tema:** `next-themes` (Modo Dinâmico).
 
 ## 🚨 Dica Forense
+
 O build da Vercel é o seu melhor amigo e seu pior inimigo. Se houver um erro de tipagem (`any`) ou um link quebrado, ele vai barrar seu site. Mantenha o `npm run lint` sempre verde!
 
 ---
