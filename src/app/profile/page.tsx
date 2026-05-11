@@ -6,8 +6,7 @@ import { redirect } from "next/navigation"
 import { ImageGrid } from "@/components/image-grid"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
-import { Settings, Image as ImageIcon, Heart } from "lucide-react"
+import { Settings, ImageIcon, Heart } from "lucide-react"
 import Link from "next/link"
 
 export default async function ProfilePage() {
@@ -40,7 +39,7 @@ export default async function ProfilePage() {
     .select('photos(*)')
     .eq('user_id', user.id)
   
-  const likedPhotos = (likedPhotosData?.map(item => item.photos) as unknown as any[]).filter(Boolean) || []
+  const likedPhotos = (likedPhotosData?.map(item => item.photos) as unknown as Photo[]).filter(Boolean) || []
   const userLikes = likedPhotos.map((p) => p.id)
 
   return (
@@ -96,7 +95,7 @@ export default async function ProfilePage() {
           
           <TabsContent value="likes">
             <ImageGrid 
-              photos={likedPhotos as any} 
+              photos={likedPhotos} 
               userLikes={userLikes}
               userId={user.id}
             />
