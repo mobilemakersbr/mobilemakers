@@ -17,6 +17,7 @@ import { FeaturedCreators } from "@/components/featured-creators"
 import { LandingPage } from "@/components/landing-page"
 import { OnboardingDialog } from "@/components/onboarding-dialog"
 import { getProfileStatus } from "./actions/profile"
+import { AdvancedFilters } from "@/components/advanced-filters"
 
 export default function Home() {
   const [photos, setPhotos] = React.useState<Photo[]>([])
@@ -25,6 +26,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = React.useState(true)
   const [searchQuery, setSearchQuery] = React.useState("")
   const [activeCategory, setActiveCategory] = React.useState("Tudo")
+  const [activeDevice, setActiveDevice] = React.useState<string | null>(null)
   const [categories, setCategories] = React.useState<string[]>(["Tudo"])
   const [topCreators, setTopCreators] = React.useState<{ name: string, totalLikes: number, userId: string, avatarUrl?: string }[]>([])
   const [showOnboarding, setShowOnboarding] = React.useState(false)
@@ -89,10 +91,11 @@ export default function Home() {
         (photo.author && photo.author.toLowerCase().includes(searchQuery.toLowerCase()))
       
       const matchesCategory = activeCategory === "Tudo" || photo.category === activeCategory
-
-      return matchesSearch && matchesCategory
+      const matchesDevice = !activeDevice || photo.device_model === activeDevice
+      
+      return matchesSearch && matchesCategory && matchesDevice
     })
-  }, [photos, searchQuery, activeCategory])
+  }, [photos, searchQuery, activeCategory, activeDevice])
 
   if (isLoading) {
     return (
@@ -128,6 +131,12 @@ export default function Home() {
           categories={categories}
           activeCategory={activeCategory} 
           onCategoryChange={setActiveCategory} 
+        />
+
+        {/* Filtros Avançados (Dispositivos) */}
+        <AdvancedFilters 
+          activeDevice={activeDevice}
+          onDeviceChange={setActiveDevice}
         />
 
         {/* Mural dos Vencedores (Gamificação) */}

@@ -99,11 +99,27 @@ export default async function PhotoPage(props: { params: Promise<{ id: string }>
 
             <div className="mt-4 border-t pt-4">
               <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Informações Técnicas</h4>
-              <div className="mt-2 grid grid-cols-2 gap-4 text-sm">
+              <div className="mt-2 grid grid-cols-2 gap-y-4 gap-x-4 text-sm">
                 <div>
-                  <p className="text-muted-foreground">Formato</p>
-                  <p className="font-medium">Vertical (UGC)</p>
+                  <p className="text-muted-foreground">Dispositivo</p>
+                  <p className="font-medium">{photo.device_model || "Mobile Device"}</p>
                 </div>
+                <div>
+                  <p className="text-muted-foreground">Resolução</p>
+                  <p className="font-medium">{photo.resolution || "Alta Resolução"}</p>
+                </div>
+                {photo.iso_speed && (
+                  <div>
+                    <p className="text-muted-foreground">ISO</p>
+                    <p className="font-medium">{photo.iso_speed}</p>
+                  </div>
+                )}
+                {photo.exposure_time && (
+                  <div>
+                    <p className="text-muted-foreground">Exposição</p>
+                    <p className="font-medium">{photo.exposure_time}</p>
+                  </div>
+                )}
                 <div>
                   <p className="text-muted-foreground">Licença</p>
                   <p className="font-medium">Uso Comercial</p>

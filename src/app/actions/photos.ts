@@ -73,3 +73,23 @@ export async function incrementView(photoId: string) {
   
   return { success: true }
 }
+
+export async function getUniqueDevices() {
+  const cookieStore = await cookies()
+  const supabase = createClient(cookieStore)
+  
+  const { data, error } = await supabase
+    .from('photos')
+    .select('device_model')
+  
+  if (error) {
+    console.error("Erro ao buscar dispositivos:", error)
+    return []
+  }
+
+  const devices = Array.from(new Set(data.map(p => p.device_model)))
+    .filter(Boolean)
+    .sort()
+
+  return devices as string[]
+}
