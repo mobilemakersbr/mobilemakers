@@ -1,0 +1,65 @@
+"use server"
+
+import { createClient } from "@/utils/supabase/server"
+import { cookies } from "next/headers"
+
+export async function getUniqueCategories() {
+  const cookieStore = await cookies()
+  const supabase = createClient(cookieStore)
+  
+  const { data, error } = await supabase
+    .from('photos')
+    .select('category')
+  
+  if (error) {
+    console.error("Erro ao buscar categorias:", error)
+    return []
+  }
+
+  const categories = Array.from(new Set(data.map(p => p.category)))
+    .filter(Boolean)
+    .sort()
+
+  return ["Tudo", ...categories]
+}
+
+export async function getTopCreators() {
+  const cookieStore = await cookies()
+  const supabase = createClient(cookieStore)
+
+  // Busca fotos e seus contadores de likes, agrupando por autor
+  // Fazemos um join com profiles para pegar o avatar
+  const { data, error } = await supabase
+    .from('photos')
+    .select(`
+      author,
+      user_id,
+      likes:likes(count),
+      profiles:user_id (
+        avatar_url
+      )
+    `)
+
+  if (error) {
+    console.error("Erro ao buscar top creators:", error)
+    return []
+  }
+
+  // Agrupa e soma likes por autor
+  const creatorStats = data.reduce((acc: Record<string, { name: string, totalLikes: number, userId: string, avatarUrl?: string }>, curr) => {
+    const author = curr.author || "Anônimo"
+    const likes = (curr.likes as unknown as { count: number }[])?.[0]?.count || 0
+    const avatarUrl = (curr.profiles as unknown as { avatar_url: string })?.avatar_url
+    
+    if (!acc[author]) {
+      acc[author] = { name: author, totalLikes: 0, userId: curr.user_id, avatarUrl }
+    }
+    acc[author].totalLikes += likes
+    return acc
+  }, {})
+
+  // Transforma em array, ordena e pega o top 5
+  return Object.values(creatorStats)
+    .sort((a, b) => b.totalLikes - a.totalLikes)
+    .slice(0, 5)
+}

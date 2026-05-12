@@ -2,9 +2,9 @@
 
 ## Current Position
 
-- **Milestone:** 2 (COMPLETO ✅)
-- **Phase:** 7 (Perfil do Usuário) - Concluída
-- **Status:** ready_for_milestone_3
+- **Milestone:** 3 (COMPLETO ✅)
+- **Phase:** 12 (Gamificação) - Concluída
+- **Status:** ready_for_audit
 
 ## Completed Phases
 
@@ -23,5 +23,6 @@
 
 ## Decisions Log
 
+- [2026-05-12] Realizada pesquisa de UX competitiva (Pexels/Pinterest). Adicionado requisito estratégico de Coleções e Gamificação para o Milestone 3.
 - [2026-05-11] Auditoria Forense e de Saúde concluída.
 - [2026-05-11] Sincronização de Roadmap para incluir as fases 4 a 7 já implementadas.

@@ -20,6 +20,22 @@ O MobileMakers resolve a falta de conteúdo autêntico (vertical/mobile) para ge
 - [ ] Busca por modelo de dispositivo (EXIF Data).
 - [ ] Licenciamento via PIX com download imediato.
 
+## Current Milestone: v3.0 Engajamento & Retenção
+
+**Goal:** Transformar o MobileMakers em uma ferramenta de inspiração e trabalho através de curadoria e gamificação.
+
+**Target features:**
+- [x] Sistema de Coleções (Moodboards/Salvar).
+
+- [x] Navegação via Tendências (Chips de categoria).
+
+- [x] Micro-interações rápidas no Grid.
+
+- [x] Selos de Licença e Segurança Jurídica.
+
+- [x] Estrutura para Desafios Semanais.
+
 ## Evolução
 
+- **2026-05-12:** Início do Milestone 3 focado em UX "viciante" pós-pesquisa competitiva.
 - **2026-05-11:** Inicialização do projeto local (KurióSchool).

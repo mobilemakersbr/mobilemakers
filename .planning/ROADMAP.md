@@ -13,8 +13,10 @@
 - ✅ **Fase 6:** Engajamento Social (Likes e Comentários)
 - ✅ **Fase 7:** Perfil do Usuário e Edição
 
-## Milestone 3: Expansão e Escala (PRÓXIMO 🚀)
+## Milestone 3: Engajamento & Retenção (PRÓXIMO 🚀)
 
-- [ ] **Fase 8:** Notificações e Atividades em Tempo Real
-- [ ] **Fase 9:** SEO Avançado e Metadados de Imagem
-- [ ] **Fase 10:** Dashboard de Analytics para Autores
+- ✅ **Fase 8:** Sistema de Coleções (Moodboards e Botão Salvar)
+- ✅ **Fase 9:** Navegação por Tendências (Chips de Categorias na Home)
+- ✅ **Fase 10:** Micro-interações de Grid (Ação rápida e Like no hover)
+- ✅ **Fase 11:** Selos de Licença e Segurança Jurídica
+- ✅ **Fase 12:** Gamificação e Desafios Semanais (Mural dos Vencedores)

@@ -1,26 +1,25 @@
-import { cn } from "@/lib/utils"
-import { photos } from "@/lib/data"
+"use client"
 
-// Extrai categorias únicas das fotos e adiciona "Tudo"
-const categories = ["Tudo", ...Array.from(new Set(photos.map((p) => p.category)))]
+import { cn } from "@/lib/utils"
 
 interface CategoryFiltersProps {
+  categories: string[]
   activeCategory: string
   onCategoryChange: (category: string) => void
 }
 
-export function CategoryFilters({ activeCategory, onCategoryChange }: CategoryFiltersProps) {
+export function CategoryFilters({ categories, activeCategory, onCategoryChange }: CategoryFiltersProps) {
   return (
-    <div className="flex w-full items-center gap-2 overflow-x-auto px-4 py-2 no-scrollbar scroll-smooth">
+    <div className="flex w-full items-center gap-2 overflow-x-auto px-4 py-3 no-scrollbar scroll-smooth">
       {categories.map((category) => (
         <button
           key={category}
           onClick={() => onCategoryChange(category)}
           className={cn(
-            "whitespace-nowrap rounded-full px-4 py-1.5 text-xs font-medium transition-all",
+            "whitespace-nowrap rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300 active:scale-95",
             activeCategory === category
-              ? "bg-primary text-primary-foreground shadow-sm"
-              : "bg-muted text-muted-foreground hover:bg-muted/80"
+              ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20 ring-2 ring-primary ring-offset-2 ring-offset-background"
+              : "bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground border border-transparent hover:border-muted-foreground/20"
           )}
         >
           {category}

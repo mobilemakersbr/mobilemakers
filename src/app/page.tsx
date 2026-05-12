@@ -10,9 +10,10 @@ import { ImageGrid } from "@/components/image-grid"
 import { SearchBar } from "@/components/search-bar"
 import { CategoryFilters } from "@/components/category-filters"
 import { Loader2, Bell } from "lucide-react"
-import { useInteractions } from "./photo/interactions"
 import { ThemeToggle } from "@/components/theme-toggle"
 import Link from "next/link"
+import { getUniqueCategories, getTopCreators } from "./actions/photos"
+import { FeaturedCreators } from "@/components/featured-creators"
 
 export default function Home() {
   const [photos, setPhotos] = React.useState<Photo[]>([])
@@ -21,8 +22,9 @@ export default function Home() {
   const [isLoading, setIsLoading] = React.useState(true)
   const [searchQuery, setSearchQuery] = React.useState("")
   const [activeCategory, setActiveCategory] = React.useState("Tudo")
+  const [categories, setCategories] = React.useState<string[]>(["Tudo"])
+  const [topCreators, setTopCreators] = React.useState<{ name: string, totalLikes: number, userId: string, avatarUrl?: string }[]>([])
   const supabase = createClient()
-  const { toggleLike } = useInteractions()
 
   // Busca fotos e dados do usuário
   React.useEffect(() => {
@@ -49,6 +51,13 @@ export default function Home() {
           
           setUserLikes(likesData?.map(l => l.photo_id) || [])
         }
+        // Buscar Categorias Únicas
+        const cats = await getUniqueCategories()
+        setCategories(cats)
+
+        // Buscar Top Creators
+        const creators = await getTopCreators()
+        setTopCreators(creators)
       } catch (err) {
         console.error("Erro ao carregar dados:", err)
       } finally {
@@ -58,28 +67,7 @@ export default function Home() {
     fetchData()
   }, [supabase])
 
-  const handleLike = async (photoId: string) => {
-    if (!user) {
-      alert("Faça login para curtir fotos!")
-      return
-    }
 
-    const isLiked = userLikes.includes(photoId)
-    
-    // Atualização otimista da UI
-    if (isLiked) {
-      setUserLikes(prev => prev.filter(id => id !== photoId))
-    } else {
-      setUserLikes(prev => [...prev, photoId])
-    }
-
-    try {
-      await toggleLike(photoId, user.id, isLiked)
-    } catch (err) {
-      // Reverter se der erro
-      alert("Erro ao salvar curtida.")
-    }
-  }
 
   // Lógica de Filtragem (Computed Property)
   const filteredPhotos = React.useMemo(() => {
@@ -111,11 +99,17 @@ export default function Home() {
           <SearchBar value={searchQuery} onChange={setSearchQuery} />
         </div>
         
-        {/* Filtros de Categoria */}
+        {/* Filtros de Categoria (Chips de Tendências) */}
         <CategoryFilters 
+          categories={categories}
           activeCategory={activeCategory} 
           onCategoryChange={setActiveCategory} 
         />
+
+        {/* Mural dos Vencedores (Gamificação) */}
+        {activeCategory === "Tudo" && !searchQuery && (
+          <FeaturedCreators creators={topCreators} />
+        )}
       </header>
 
       {/* Galeria Principal Filtrada */}

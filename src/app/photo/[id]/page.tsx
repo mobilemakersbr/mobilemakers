@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { createClient } from "@/utils/supabase/server"
 import { cookies } from "next/headers"
 import { CommentsSection } from "@/components/comments-section"
+import { LicenseBadge } from "@/components/license-badge"
 
 export default async function PhotoPage(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
@@ -91,6 +92,8 @@ export default async function PhotoPage(props: { params: Promise<{ id: string }>
                 Baixar Imagem
               </Button>
             </div>
+
+            <LicenseBadge />
 
             <div className="mt-4 border-t pt-4">
               <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Informações Técnicas</h4>

@@ -7,7 +7,7 @@ import { ImageGrid } from "@/components/image-grid"
 import { Photo } from "@/lib/data"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Settings, ImageIcon, Heart } from "lucide-react"
+import { Settings, ImageIcon, Heart, Bookmark } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
 import Link from "next/link"
 
@@ -44,6 +44,12 @@ export default async function ProfilePage() {
   const likedPhotos = (likedPhotosData?.map(item => item.photos) as unknown as Photo[]).filter(Boolean) || []
   const userLikes = likedPhotos.map((p) => p.id)
 
+  // 5. Buscar Coleções
+  const { data: collections } = await supabase
+    .from('collections')
+    .select('*, collection_photos(count)')
+    .eq('user_id', user.id)
+
   return (
     <div className="flex min-h-screen flex-col bg-background pb-20">
       {/* Header do Perfil */}
@@ -78,16 +84,20 @@ export default async function ProfilePage() {
       <main className="container mx-auto mt-6">
         <Tabs defaultValue="photos" className="w-full">
           <div className="px-4">
-            <TabsList className="grid w-full grid-cols-2 mb-8 bg-muted/50 p-1">
-              <TabsTrigger value="photos" className="gap-2">
-                <ImageIcon className="h-4 w-4" />
-                Minhas Fotos ({myPhotos?.length || 0})
-              </TabsTrigger>
-              <TabsTrigger value="likes" className="gap-2">
-                <Heart className="h-4 w-4" />
-                Curtidas ({likedPhotos.length})
-              </TabsTrigger>
-            </TabsList>
+              <TabsList className="grid w-full grid-cols-3 mb-8 bg-muted/50 p-1">
+                <TabsTrigger value="photos" className="gap-2">
+                  <ImageIcon className="h-4 w-4" />
+                  Fotos ({myPhotos?.length || 0})
+                </TabsTrigger>
+                <TabsTrigger value="likes" className="gap-2">
+                  <Heart className="h-4 w-4" />
+                  Curtidas ({likedPhotos.length})
+                </TabsTrigger>
+                <TabsTrigger value="collections" className="gap-2">
+                  <Bookmark className="h-4 w-4" />
+                  Coleções ({collections?.length || 0})
+                </TabsTrigger>
+              </TabsList>
           </div>
 
           <TabsContent value="photos">
@@ -104,6 +114,38 @@ export default async function ProfilePage() {
               userLikes={userLikes}
               userId={user.id}
             />
+          </TabsContent>
+
+          <TabsContent value="collections">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+              {collections?.map((col) => (
+                <Link 
+                  key={col.id} 
+                  href={`/profile/collection/${col.id}`}
+                  className="group relative flex flex-col gap-2 p-4 rounded-xl border bg-card hover:bg-accent transition-all hover:ring-2 hover:ring-primary"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                        <Bookmark className="h-5 w-5" />
+                      </div>
+                      <h3 className="font-bold text-lg">{col.name}</h3>
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    {col.collection_photos?.[0]?.count || 0} fotos salvas
+                  </p>
+                  <div className="mt-2 flex -space-x-2 overflow-hidden">
+                    {/* Placeholder para miniaturas se tivéssemos */}
+                  </div>
+                </Link>
+              ))}
+              {collections?.length === 0 && (
+                <div className="col-span-full py-20 text-center border-2 border-dashed rounded-2xl">
+                  <p className="text-muted-foreground">Você ainda não criou nenhuma coleção.</p>
+                </div>
+              )}
+            </div>
           </TabsContent>
         </Tabs>
       </main>

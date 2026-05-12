@@ -3,10 +3,11 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Photo } from "@/lib/data"
-import { Heart, Trash2 } from "lucide-react"
+import { Heart, Trash2, Bookmark } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useInteractions } from "@/app/photo/interactions"
 import { useState } from "react"
+import { SaveToCollectionDialog } from "./collections/save-dialog"
 
 interface ImageCardProps {
   photo: Photo
@@ -92,18 +93,26 @@ export function ImageCard({ photo, isLiked: initialLiked = false, userId }: Imag
         </button>
       )}
 
-      {/* Botão de Like */}
-      <button 
-        onClick={(e) => {
-          e.preventDefault()
-          e.stopPropagation()
-          handleLike()
-        }}
-        aria-label="Curtir foto"
-        className="absolute right-3 top-3 z-50 rounded-full bg-background/20 p-2 text-white backdrop-blur-md transition-all hover:bg-background/40 active:scale-90"
-      >
-        <Heart className={cn("h-5 w-5 transition-colors", isLiked ? "fill-red-500 text-red-500" : "text-white")} />
-      </button>
+      {/* Botões de Ação Rápidos (Like e Save) */}
+      <div className="absolute right-3 top-3 z-50 flex gap-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-300 transform sm:translate-y-[-10px] sm:group-hover:translate-y-0">
+        <SaveToCollectionDialog photoId={photo.id} userId={userId} />
+        <button 
+          onClick={(e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            handleLike()
+          }}
+          aria-label="Curtir foto"
+          className={cn(
+            "rounded-full p-2 backdrop-blur-md transition-all duration-300 active:scale-90 hover:scale-110",
+            isLiked 
+              ? "bg-red-500 text-white shadow-lg shadow-red-500/20" 
+              : "bg-background/40 text-white hover:bg-background/60"
+          )}
+        >
+          <Heart className={cn("h-5 w-5 transition-transform duration-300", isLiked && "fill-current animate-in zoom-in-75")} />
+        </button>
+      </div>
     </div>
   )
 }

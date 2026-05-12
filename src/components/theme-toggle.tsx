@@ -9,8 +9,10 @@ export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
 
-  // Evita erro de hidratação
+  // Evita erro de hidratação (necessário para Next.js)
   React.useEffect(() => {
+    // eslint-disable-next-line react-compiler/react-compiler
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     setMounted(true)
   }, [])
 

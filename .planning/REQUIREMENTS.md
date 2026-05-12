@@ -22,3 +22,20 @@
 
 - Implementação de JSON-LD para imagens licenciáveis.
 - URLs amigáveis com slugs baseados em tags.
+
+## REQ-005: Sistema de Coleções (Moodboards) [MILESTONE 3]
+
+- Usuário logado pode criar múltiplas pastas/coleções.
+- Salvar fotos em coleções específicas diretamente do grid ou da página de detalhes.
+- Visualizar coleções no perfil do usuário.
+
+## REQ-006: Descoberta via Tendências [MILESTONE 3]
+
+- Barra de busca acompanhada de "chips" (pílulas) horizontais roláveis.
+- Chips baseados nas categorias mais populares ou tags de tendência.
+
+## REQ-007: Engajamento e Gamificação [MILESTONE 3]
+
+- Sistema de Ranking para os autores mais populares da semana.
+- Mural dos vencedores (Destaques) na Home.
+- Selo visual de licença/segurança nas imagens para aumentar conversão.
