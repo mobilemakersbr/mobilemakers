@@ -4,6 +4,7 @@ import { ArrowRight, Smartphone, ShieldCheck, Zap, Image as ImageIcon } from "lu
 import { Button, buttonVariants } from "@/components/ui/button"
 import Link from "next/link"
 import { NewsletterForm } from "./newsletter-form"
+import { cn } from "@/lib/utils"
 
 export function LandingPage() {
   return (
