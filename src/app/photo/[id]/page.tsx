@@ -9,6 +9,7 @@ import { createClient } from "@/utils/supabase/server"
 import { cookies } from "next/headers"
 import { CommentsSection } from "@/components/comments-section"
 import { LicenseBadge } from "@/components/license-badge"
+import { ViewIncrementer } from "@/components/view-incrementer"
 
 export default async function PhotoPage(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
@@ -44,8 +45,9 @@ export default async function PhotoPage(props: { params: Promise<{ id: string }>
     .order('created_at', { ascending: false })
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      {/* Header de Ação */}
+    <div className="flex min-h-screen flex-col bg-background pb-20">
+      <ViewIncrementer photoId={photo.id} />
+      {/* Imagem Principal */}
       <header className="sticky top-0 z-50 flex h-14 items-center justify-between border-b bg-background/80 px-4 backdrop-blur-md">
         <Link href="/" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
           <ArrowLeft className="h-5 w-5" />

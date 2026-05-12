@@ -2,9 +2,9 @@
 
 ## Current Position
 
-- **Milestone:** 4 (COMPLETO ✅)
-- **Phase:** 15 (Newsletter) - Concluída
-- **Status:** ready_for_audit
+- **Milestone:** 5 (EM ANDAMENTO 🚀)
+- **Phase:** 16 (Creator Dashboard)
+- **Status:** planning
 
 ## Completed Phases
 

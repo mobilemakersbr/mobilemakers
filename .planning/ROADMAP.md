@@ -26,3 +26,9 @@
 - ✅ **Fase 13:** Landing Page para Usuários Não-Logados (Hero & Valor)
 - ✅ **Fase 14:** Fluxo de Onboarding Guiado
 - ✅ **Fase 15:** Integração de Newsletter e Captura de Leads
+
+## Milestone 5: Experiência Pro & Administração (NOVO 🚀)
+
+- ✅ **Fase 16:** Creator Dashboard (Analytics de Engajamento)
+- [ ] **Fase 17:** Painel Administrativo de Leads (Mailing List)
+- [ ] **Fase 18:** Filtros de Metadados (Dispositivo & Resolução)

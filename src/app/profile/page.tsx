@@ -7,8 +7,9 @@ import { ImageGrid } from "@/components/image-grid"
 import { Photo } from "@/lib/data"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Settings, ImageIcon, Heart, Bookmark } from "lucide-react"
+import { Settings, ImageIcon, Heart, Bookmark, TrendingUp } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { CreatorStats } from "@/components/creator-stats"
 import Link from "next/link"
 
 export default async function ProfilePage() {
@@ -97,6 +98,10 @@ export default async function ProfilePage() {
                   <Bookmark className="h-4 w-4" />
                   Coleções ({collections?.length || 0})
                 </TabsTrigger>
+                <TabsTrigger value="stats" className="gap-2">
+                  <TrendingUp className="h-4 w-4" />
+                  Estatísticas
+                </TabsTrigger>
               </TabsList>
           </div>
 
@@ -145,6 +150,11 @@ export default async function ProfilePage() {
                   <p className="text-muted-foreground">Você ainda não criou nenhuma coleção.</p>
                 </div>
               )}
+            </div>
+          </TabsContent>
+          <TabsContent value="stats">
+            <div className="px-4">
+              <CreatorStats />
             </div>
           </TabsContent>
         </Tabs>

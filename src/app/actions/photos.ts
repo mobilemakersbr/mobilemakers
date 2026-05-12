@@ -27,8 +27,6 @@ export async function getTopCreators() {
   const cookieStore = await cookies()
   const supabase = createClient(cookieStore)
 
-  // Busca fotos e seus contadores de likes, agrupando por autor
-  // Fazemos um join com profiles para pegar o avatar
   const { data, error } = await supabase
     .from('photos')
     .select(`
@@ -45,7 +43,6 @@ export async function getTopCreators() {
     return []
   }
 
-  // Agrupa e soma likes por autor
   const creatorStats = data.reduce((acc: Record<string, { name: string, totalLikes: number, userId: string, avatarUrl?: string }>, curr) => {
     const author = curr.author || "Anônimo"
     const likes = (curr.likes as unknown as { count: number }[])?.[0]?.count || 0
@@ -58,8 +55,21 @@ export async function getTopCreators() {
     return acc
   }, {})
 
-  // Transforma em array, ordena e pega o top 5
   return Object.values(creatorStats)
     .sort((a, b) => b.totalLikes - a.totalLikes)
     .slice(0, 5)
+}
+
+export async function incrementView(photoId: string) {
+  const cookieStore = await cookies()
+  const supabase = createClient(cookieStore)
+  
+  const { error } = await supabase.rpc('increment_photo_views', { photo_id: photoId })
+  
+  if (error) {
+    console.error("Erro ao incrementar views:", error)
+    return { success: false }
+  }
+  
+  return { success: true }
 }
