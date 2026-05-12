@@ -16,11 +16,29 @@ export async function subscribeToNewsletter(email: string) {
     .insert({ email })
 
   if (error) {
-    if (error.code === "23505") { // Unique violation
+    if (error.code === "23505") {
       throw new Error("Este e-mail já está inscrito em nossa newsletter!")
     }
     throw error
   }
 
   return { success: true }
+}
+
+export async function getNewsletterLeads() {
+  const cookieStore = await cookies()
+  const supabase = createClient(cookieStore)
+  
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user || user.email !== "mathcuskurio@gmail.com") {
+    throw new Error("Não autorizado")
+  }
+
+  const { data, error } = await supabase
+    .from("newsletter_leads")
+    .select("*")
+    .order("created_at", { ascending: false })
+
+  if (error) throw error
+  return data
 }
