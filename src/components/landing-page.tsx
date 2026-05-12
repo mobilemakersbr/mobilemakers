@@ -1,7 +1,7 @@
 "use client"
 
 import { ArrowRight, Smartphone, ShieldCheck, Zap, Image as ImageIcon } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import Link from "next/link"
 import { NewsletterForm } from "./newsletter-form"
 
@@ -26,12 +26,16 @@ export function LandingPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
-              <Button asChild size="lg" className="rounded-full h-14 px-8 text-lg font-bold shadow-lg shadow-primary/20">
-                <Link href="/login">
-                  Começar a Explorar Grátis
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
+              <Link 
+                href="/login" 
+                className={cn(
+                  buttonVariants({ size: "lg" }), 
+                  "rounded-full h-14 px-8 text-lg font-bold shadow-lg shadow-primary/20"
+                )}
+              >
+                Começar a Explorar Grátis
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
               <Button variant="outline" size="lg" className="rounded-full h-14 px-8 text-lg font-bold">
                 Saiba como funciona
               </Button>
@@ -76,7 +80,7 @@ export function LandingPage() {
               </div>
               <h3 className="text-xl font-bold">Curadoria UGC</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                Conteúdo com cara de "pessoa real". A estética que gera mais cliques e menos resistência do público em redes sociais.
+                Conteúdo com cara de &quot;pessoa real&quot;. A estética que gera mais cliques e menos resistência do público em redes sociais.
               </p>
             </div>
           </div>
@@ -91,9 +95,15 @@ export function LandingPage() {
       {/* Footer / CTA Final */}
       <footer className="py-20 text-center container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8">Pronto para elevar o nível do seu conteúdo?</h2>
-        <Button asChild size="lg" className="rounded-full h-12 px-10">
-          <Link href="/login">Criar Minha Conta Grátis</Link>
-        </Button>
+        <Link 
+          href="/login" 
+          className={cn(
+            buttonVariants({ size: "lg" }), 
+            "rounded-full h-12 px-10"
+          )}
+        >
+          Criar Minha Conta Grátis
+        </Link>
         <p className="mt-8 text-sm text-muted-foreground">
           © 2026 MobileMakers. Feito para quem cria o futuro do marketing.
         </p>

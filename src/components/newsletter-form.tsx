@@ -21,8 +21,9 @@ export function NewsletterForm() {
       await subscribeToNewsletter(email)
       setIsSubscribed(true)
       setEmail("")
-    } catch (err: any) {
-      setError(err.message || "Ocorreu um erro ao se inscrever.")
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Ocorreu um erro ao se inscrever."
+      setError(message)
     } finally {
       setIsLoading(false)
     }

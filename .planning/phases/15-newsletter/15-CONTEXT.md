@@ -11,11 +11,13 @@ Implementar um sistema de captura de e-mails para marketing. O objetivo é conve
 ## Implementation Decisions
 
 ### UI/UX
+
 - **Newsletter Section:** Adicionar uma seção no final da `LandingPage` com um campo de e-mail e botão "Me inscrever".
 - **Design:** Simples, limpo e integrado à identidade visual dark mode.
 - **Micro-interações:** Loading state no botão e mensagem de "Obrigado!" animada.
 
 ### Lógica
+
 - **Server Action:** `subscribeToNewsletter` para validar e salvar o e-mail no Supabase.
 - **Validação:** Garantir formato de e-mail válido no client e no server.
 
