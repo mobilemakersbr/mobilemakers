@@ -20,3 +20,9 @@
 - ✅ **Fase 10:** Micro-interações de Grid (Ação rápida e Like no hover)
 - ✅ **Fase 11:** Selos de Licença e Segurança Jurídica
 - ✅ **Fase 12:** Gamificação e Desafios Semanais (Mural dos Vencedores)
+
+## Milestone 4: Aquisição & Conversão (NOVO ⚡)
+
+- ✅ **Fase 13:** Landing Page para Usuários Não-Logados (Hero & Valor)
+- [ ] **Fase 14:** Fluxo de Onboarding Guiado
+- [ ] **Fase 15:** Integração de Newsletter e Captura de Leads

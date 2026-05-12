@@ -2,9 +2,9 @@
 
 ## Current Position
 
-- **Milestone:** 3 (COMPLETO ✅)
-- **Phase:** 12 (Gamificação) - Concluída
-- **Status:** ready_for_audit
+- **Milestone:** 4 (EM ANDAMENTO 🚀)
+- **Phase:** 13 (Landing Page)
+- **Status:** planning
 
 ## Completed Phases
 

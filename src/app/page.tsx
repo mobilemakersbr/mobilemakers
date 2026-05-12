@@ -14,6 +14,7 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import Link from "next/link"
 import { getUniqueCategories, getTopCreators } from "./actions/photos"
 import { FeaturedCreators } from "@/components/featured-creators"
+import { LandingPage } from "@/components/landing-page"
 
 export default function Home() {
   const [photos, setPhotos] = React.useState<Photo[]>([])
@@ -82,6 +83,18 @@ export default function Home() {
     })
   }, [photos, searchQuery, activeCategory])
 
+  if (isLoading) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    )
+  }
+
+  if (!user) {
+    return <LandingPage />
+  }
+
   return (
     <div className="flex flex-col gap-2">
       {/* Header com Busca */}
@@ -114,18 +127,11 @@ export default function Home() {
 
       {/* Galeria Principal Filtrada */}
       <main className="flex-1">
-        {isLoading ? (
-          <div className="flex flex-col items-center justify-center py-20 text-muted-foreground">
-            <Loader2 className="h-8 w-8 animate-spin mb-2" />
-            <p>Carregando galeria...</p>
-          </div>
-        ) : (
-          <ImageGrid 
-            photos={filteredPhotos} 
-            userLikes={userLikes}
-            userId={user?.id}
-          />
-        )}
+        <ImageGrid 
+          photos={filteredPhotos} 
+          userLikes={userLikes}
+          userId={user?.id}
+        />
       </main>
 
       <div className="h-4" />
