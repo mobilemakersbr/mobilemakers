@@ -7,7 +7,7 @@ import {
   PopoverContent, 
   PopoverTrigger 
 } from "@/components/ui/popover"
-import { Smartphone, Filter, X } from "lucide-react"
+import { Smartphone, X } from "lucide-react"
 import { getUniqueDevices } from "@/app/actions/photos"
 
 interface AdvancedFiltersProps {

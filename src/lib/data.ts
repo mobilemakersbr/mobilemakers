@@ -6,6 +6,11 @@ export interface Photo {
   category: string
   aspectRatio: "portrait" | "landscape" | "square"
   user_id?: string
+  device_model?: string
+  resolution?: string
+  views_count?: number
+  iso_speed?: string
+  exposure_time?: string
 }
 
 export const photos: Photo[] = [
