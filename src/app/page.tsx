@@ -15,6 +15,8 @@ import Link from "next/link"
 import { getUniqueCategories, getTopCreators } from "./actions/photos"
 import { FeaturedCreators } from "@/components/featured-creators"
 import { LandingPage } from "@/components/landing-page"
+import { OnboardingDialog } from "@/components/onboarding-dialog"
+import { getProfileStatus } from "./actions/profile"
 
 export default function Home() {
   const [photos, setPhotos] = React.useState<Photo[]>([])
@@ -25,6 +27,7 @@ export default function Home() {
   const [activeCategory, setActiveCategory] = React.useState("Tudo")
   const [categories, setCategories] = React.useState<string[]>(["Tudo"])
   const [topCreators, setTopCreators] = React.useState<{ name: string, totalLikes: number, userId: string, avatarUrl?: string }[]>([])
+  const [showOnboarding, setShowOnboarding] = React.useState(false)
   const supabase = createClient()
 
   // Busca fotos e dados do usuário
@@ -59,6 +62,14 @@ export default function Home() {
         // Buscar Top Creators
         const creators = await getTopCreators()
         setTopCreators(creators)
+
+        // Verificar Onboarding
+        if (user) {
+          const profile = await getProfileStatus()
+          if (profile && !profile.onboarding_completed) {
+            setShowOnboarding(true)
+          }
+        }
       } catch (err) {
         console.error("Erro ao carregar dados:", err)
       } finally {
@@ -135,6 +146,11 @@ export default function Home() {
       </main>
 
       <div className="h-4" />
+
+      <OnboardingDialog 
+        isOpen={showOnboarding} 
+        onClose={() => setShowOnboarding(false)} 
+      />
     </div>
   );
 }
