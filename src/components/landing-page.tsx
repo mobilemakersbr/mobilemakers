@@ -3,6 +3,7 @@
 import { ArrowRight, Smartphone, ShieldCheck, Zap, Image as ImageIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { NewsletterForm } from "./newsletter-form"
 
 export function LandingPage() {
   return (
@@ -80,6 +81,11 @@ export function LandingPage() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="py-24 container mx-auto px-4">
+        <NewsletterForm />
       </section>
 
       {/* Footer / CTA Final */}

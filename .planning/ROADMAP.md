@@ -25,4 +25,4 @@
 
 - ✅ **Fase 13:** Landing Page para Usuários Não-Logados (Hero & Valor)
 - ✅ **Fase 14:** Fluxo de Onboarding Guiado
-- [ ] **Fase 15:** Integração de Newsletter e Captura de Leads
+- ✅ **Fase 15:** Integração de Newsletter e Captura de Leads
